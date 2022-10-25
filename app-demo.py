@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 plt.style.use('seaborn')
 
 
-st.title('World Cites from ')
+st.title('World Cites')
 df = pd.read_csv('worldcities.csv')
 
 # note that you have to use 0.0 and 40.0 given that the data type of population is float
-population_filter = st.slider('Minimal Population (Millions):', 0.0, 40.0, 20)  # min, max, default
+population_filter = st.slider('Minimal Population (Millions):', 0.0, 40.0, 3.6)  # min, max, default
 
 # create a multi select
 capital_filter = st.sidebar.multiselect(
