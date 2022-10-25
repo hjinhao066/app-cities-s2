@@ -9,11 +9,11 @@ df = pd.read_csv('housing.csv')
 
 
 # note that you have to use 0.0 and 40.0 given that the data type of population is float
-price_filter = st.slider('Minimal Population (Millions):', 0.0, 500001.0, 1000.0)  # min, max, default
+price_filter = st.slider('Median House Price', 0.0, 500001.0, 1000.0)  # min, max, default
 
 # create a multi select
 ocean_proximaity_filter = st.sidebar.multiselect(
-    'ocean_proximity Selector',
+     'ocean_proximity Selector',
      df.ocean_proximaity.unique(),
      df.ocean_proximaity.unique())
 
@@ -21,7 +21,8 @@ ocean_proximaity_filter = st.sidebar.multiselect(
 
 
 # create a input form
-form = st.sidebar.form("country_form")
+form = st.sidebar.form("
+")
 country_filter = form.text_input('choose input level', ('Low','Medium','high'))
 form.form_submit_button("submit")
 
