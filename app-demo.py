@@ -3,44 +3,50 @@ import pandas as pd
 import matplotlib.pyplot as plt
 plt.style.use('seaborn')
 
+st.title('Clifornia Housing Data (1990 )by Jinhao Hu ')
+df = pd.read_csv('housing.csv')
 
-st.title('World Citeshujinhoa')
-df = pd.read_csv('worldcities.csv')
+
 
 # note that you have to use 0.0 and 40.0 given that the data type of population is float
-population_filter = st.slider('Minimal Population (Millions):', 0.0, 40.0, 3.6)  # min, max, default
+price_filter = st.slider('Minimal Population (Millions):', 0.0, 500001.0, 1000.0)  # min, max, default
 
 # create a multi select
-capital_filter = st.sidebar.multiselect(
-     'Capital Selector',
-     df.capital.unique(),  # options
-     df.capital.unique())  # defaults
+ocean_proximaity_filter = st.sidebar.multiselect(
+    'ocean_proximity Selector'
+     df.ocean_proximaity.pd.unique()
+     df.ocean_proximaity.pd.unique())
+
+
+
 
 # create a input form
 form = st.sidebar.form("country_form")
-country_filter = form.text_input('Country Name (enter ALL to reset)', 'ALL')
-form.form_submit_button("Apply")
+country_filter = form.text_input('choose input level', ('Low','Medium','high'))
+form.form_submit_button("submit")
 
 
-# filter by population
-df = df[df.population >= population_filter]
 
-# filter by capital
-df = df[df.capital.isin(capital_filter)]
+df = df[df.median_house_value <= price_filter]
 
-if country_filter!='ALL':
-    df = df[df.country == country_filter]
 
+df = df[df.cocean_proximity.isin(ocean_proximaity_filter)]
+
+if country_filter!='Low':
+    df = df[df.median_income <= 2.5]
+elif country_filter!='Medium':
+    df = df[df.median_income >= 2.5 & df.median_income <= 4.5 ]
+elif country_filter!='high':
+    df = df[df.median_income > 4.5 ]
+
+
+st.subheader('see more filters in the sidebar')
 # show on map
 st.map(df)
 
-# show dataframe
-st.subheader('City Details:')
-st.write(df[['city', 'country', 'population']])
 
-# show the plot
-st.subheader('Total Population By Country')
-fig, ax = plt.subplots(figsize=(20, 5))
-pop_sum = df.groupby('country')['population'].sum()
-pop_sum.plot.bar(ax=ax)
+st.subheader('Histogram of the Median House Value')
+fig,ax=plt.subplot(figsize=(15,15))
+df.median_house_value.hist(bins=30)
+ax.set_title('Histogram of the Median House Value')
 st.pyplot(fig)
