@@ -14,8 +14,8 @@ price_filter = st.slider('Minimal Population (Millions):', 0.0, 500001.0, 1000.0
 # create a multi select
 ocean_proximaity_filter = st.sidebar.multiselect(
     'ocean_proximity Selector'
-     df.ocean_proximaity.pd.unique()
-     df.ocean_proximaity.pd.unique())
+     df.ocean_proximaity.unique()
+     df.ocean_proximaity.unique())
 
 
 
