@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 plt.style.use('seaborn')
 
 
-st.title('World Cites from hujinhao')
+st.title('World Cites from ')
 df = pd.read_csv('worldcities.csv')
 
 # note that you have to use 0.0 and 40.0 given that the data type of population is float
