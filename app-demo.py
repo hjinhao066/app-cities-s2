@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 plt.style.use('seaborn')
 
 
-st.title('California Housing Data(1990) by Tianyu Liu')
+st.title('California Housing Data(1990) by Jinhao Hu')
 df = pd.read_csv('housing.csv')
 price_filter = st.slider('Median House Price', 0.0, 500001.0, 1000.0)  
 
