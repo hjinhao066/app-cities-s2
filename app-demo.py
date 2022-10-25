@@ -21,8 +21,7 @@ ocean_proximaity_filter = st.sidebar.multiselect(
 
 
 # create a input form
-form = st.sidebar.form("
-")
+form = st.sidebar.form("aa")
 country_filter = form.text_input('choose input level', ('Low','Medium','high'))
 form.form_submit_button("submit")
 
